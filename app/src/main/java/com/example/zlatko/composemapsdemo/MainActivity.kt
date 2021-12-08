@@ -9,8 +9,6 @@ import androidx.compose.ui.viewinterop.AndroidView
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
 
 class MainActivity : ComponentActivity() {
 
@@ -25,18 +23,11 @@ class MainActivity : ComponentActivity() {
                     }
                 }
                 composable("MapsScreen") {
-                    val mapView = rememberMapViewWithLifecycle()
-                    AndroidView({ mapView }) { mapView ->
-                        mapView.getMapAsync { map ->
-                            map.setOnInfoWindowClickListener {
-                                navController.navigate("Screen1")
-                            }
+                    val button = android.widget.Button(applicationContext)
 
-                            val markerOptions = MarkerOptions()
-                                .position(LatLng(41.390205, 2.154007))
-                                .title("Barcelona")
-                            map.addMarker(markerOptions)!!
-                        }
+                    AndroidView({ button }) { button ->
+                        button.text = "Go to Screen1"
+                        button.setOnClickListener { navController.navigate("Screen1") }
                     }
                 }
             }
