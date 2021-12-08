@@ -3,11 +3,9 @@ package com.example.zlatko.composemapsdemo
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.clickable
 import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.navigation.compose.NavHost
@@ -30,7 +28,7 @@ class MainActivity : ComponentActivity() {
         val navController = rememberNavController()
         NavHost(navController = navController, startDestination = "Screen1") {
             composable("Screen1") {
-                Button({navController.navigate("MapsScreen")}) {
+                Button({ navController.navigate("MapsScreen") }) {
                     Text(text = "Go to Maps")
                 }
             }
@@ -50,7 +48,7 @@ class MainActivity : ComponentActivity() {
                 }
             }
             composable("Screen2") {
-                Button({navController.navigate("Screen1")}) {
+                Button({ navController.navigate("Screen1") }) {
                     Text(text = "Go Home")
                 }
 
